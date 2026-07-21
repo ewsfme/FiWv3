@@ -1,18 +1,6 @@
 {
-<<<<<<< HEAD
-  "headers": [
-    {
-      "source": "/js/(.*).js",
-      "headers": [
-        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" }
-      ]
-    }
-  ]
-}
-=======
   "buildCommand": null,
   "outputDirectory": null,
   "framework": null,
   "cleanUrls": false
 }
->>>>>>> a59abec (Structur32)
