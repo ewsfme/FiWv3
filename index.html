@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ember &amp; Tide — co-op platformer</title>
+<link rel="stylesheet" href="css/ui.css" />
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+
+<main class="shell">
+
+  <!-- ---------------------------------------------------- connect -->
+  <section id="screen-connect" class="panel center">
+    <p class="eyebrow">Peer to peer · no game server</p>
+    <h1 id="connect-title">Opening a room</h1>
+    <p id="connect-note" class="muted">Talking to the signalling server…</p>
+
+    <div id="share-row" class="share" hidden>
+      <input id="share-link" readonly />
+      <button id="copy-link" class="btn">Copy link</button>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------ lobby -->
+  <section id="screen-lobby" class="panel" hidden>
+    <header class="lobby-head">
+      <div>
+        <p class="eyebrow">Level select</p>
+        <h1>Pick a stage</h1>
+        <p id="lobby-hint" class="muted"></p>
+      </div>
+      <div class="roles">
+        <div class="role-row"><span class="label">You</span><span id="role-mine" class="role-chip"></span></div>
+        <div class="role-row"><span class="label">Partner</span><span id="role-theirs" class="role-chip"></span></div>
+        <button class="btn ghost host-only" data-action="swap" hidden>Swap characters</button>
+      </div>
+    </header>
+    <div id="level-grid" class="level-grid"></div>
+  </section>
+
+  <!-- ------------------------------------------------------- game -->
+  <section id="screen-game" hidden>
+    <div class="hud">
+      <button id="btn-to-lobby" class="btn ghost">Level select</button>
+      <span id="hud-level" class="hud-level"></span>
+      <button class="btn ghost host-only" data-action="swap" hidden>Swap characters</button>
+    </div>
+    <div class="stage-wrap">
+      <canvas id="stage" width="800" height="512"></canvas>
+      <div id="modal-complete" class="modal" hidden>
+        <div class="modal-card">
+          <p class="eyebrow">Both doors reached</p>
+          <h2 id="complete-title">Level cleared</h2>
+          <div class="modal-actions">
+            <button id="btn-next" class="btn">Next level</button>
+            <button id="btn-select" class="btn ghost">Level select</button>
+          </div>
+          <p id="complete-wait" class="muted" hidden>Waiting for the host to choose.</p>
+        </div>
+      </div>
+    </div>
+    <p class="keys muted">Move with <kbd>A</kbd>/<kbd>D</kbd> or arrows · jump with <kbd>W</kbd>, <kbd>↑</kbd> or <kbd>Space</kbd></p>
+  </section>
+
+</main>
+
+<div id="toast" class="toast" hidden></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
