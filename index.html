@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,5 +70,76 @@
 <div id="toast" class="toast" hidden></div>
 
 <script type="module" src="js/main.js"></script>
+=======
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fireboy &amp; Watergirl — P2P</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- 1. підключення -->
+  <div id="network-panel" class="panel">
+    <div id="status">Перевірка кімнати...</div>
+    <button id="action-btn" class="btn" style="display:none;">Я підключився, почати гру!</button>
+    <div class="reset-row">
+      <a href="#" id="reset-link">Не та кімната? Створити нову</a>
+    </div>
+  </div>
+
+  <!-- 2. вибір рівня (бачать обидва, клікає лише хост) -->
+  <div id="lobby" class="panel" hidden>
+    <header class="lobby-head">
+      <div>
+        <p class="eyebrow">Вибір рівня</p>
+        <h1>Оберіть етап</h1>
+        <p id="lobby-hint" class="muted"></p>
+      </div>
+      <div class="roles">
+        <div class="role-row"><span class="label">Ви</span><span id="role-mine" class="chip"></span></div>
+        <div class="role-row"><span class="label">Партнер</span><span id="role-theirs" class="chip"></span></div>
+        <button class="btn ghost host-only" data-action="swap">Поміняти персонажів</button>
+      </div>
+    </header>
+    <div id="level-grid" class="level-grid"></div>
+  </div>
+
+  <!-- 3. гра -->
+  <div id="game-wrap" hidden>
+    <div class="hud">
+      <button id="to-lobby" class="btn ghost host-only">Вибір рівня</button>
+      <span id="hud-level"></span>
+      <button class="btn ghost host-only" data-action="swap">Поміняти персонажів</button>
+    </div>
+
+    <div class="stage">
+      <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+      <div id="modal" class="modal" hidden>
+        <div class="modal-card">
+          <p class="eyebrow">Обидві двері досягнуто</p>
+          <h2 id="modal-title">Рівень пройдено</h2>
+          <div class="modal-actions host-only">
+            <button id="btn-next" class="btn">Наступний рівень</button>
+            <button id="btn-select" class="btn ghost">Вибір рівня</button>
+          </div>
+          <p id="modal-wait" class="muted">Хост обирає, що далі...</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="keys muted">
+      Рух — <kbd>A</kbd>/<kbd>D</kbd> або стрілки · стрибок — <kbd>W</kbd>, <kbd>↑</kbd>, <kbd>Space</kbd>
+    </p>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script type="module" src="/src/main.js"></script>
+>>>>>>> a59abec (Structur32)
 </body>
 </html>

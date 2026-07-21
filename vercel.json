@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "headers": [
     {
       "source": "/js/(.*).js",
@@ -8,3 +9,10 @@
     }
   ]
 }
+=======
+  "buildCommand": null,
+  "outputDirectory": null,
+  "framework": null,
+  "cleanUrls": false
+}
+>>>>>>> a59abec (Structur32)

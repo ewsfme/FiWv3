@@ -1,0 +1,123 @@
+:root {
+  --bg: #0b0d14;
+  --panel: #141826;
+  --line: #262c41;
+  --ink: #e8ecf6;
+  --muted: #8d95ad;
+  --fire: #ff6a3d;
+  --water: #3fd0e8;
+  --gold: #f5c542;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(900px 500px at 15% -10%, rgba(255,106,61,.13), transparent 60%),
+    radial-gradient(900px 500px at 85% 110%, rgba(63,208,232,.13), transparent 60%),
+    var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+h1 { font-size: clamp(22px, 4vw, 32px); margin: 4px 0 8px; letter-spacing: -.02em; }
+h2 { font-size: 21px; margin: 4px 0 14px; }
+.muted { color: var(--muted); margin: 0; }
+.eyebrow {
+  margin: 0; font-size: 11px; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+.panel {
+  width: min(860px, 100%);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 26px;
+}
+
+#network-panel { text-align: center; white-space: pre-line; }
+.reset-row { margin-top: 14px; font-size: 13px; }
+.reset-row a { color: var(--muted); }
+
+.btn {
+  appearance: none; border: 0; cursor: pointer;
+  background: var(--gold); color: #1a1405;
+  font: inherit; font-weight: 600;
+  padding: 10px 18px; border-radius: 10px;
+  transition: filter .12s ease, transform .12s ease;
+}
+.btn:hover { filter: brightness(1.07); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn:focus-visible { outline: 2px solid var(--water); outline-offset: 2px; }
+
+/* --------------------------------------------------------------- лоббі */
+.lobby-head { display: flex; gap: 24px; justify-content: space-between; flex-wrap: wrap; }
+.roles { display: grid; gap: 8px; align-content: start; min-width: 220px; }
+.role-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.role-row .label { color: var(--muted); font-size: 13px; }
+.chip {
+  padding: 5px 12px; border-radius: 999px; font-weight: 600; font-size: 13px;
+  border: 1px solid var(--line);
+}
+.chip.fire  { color: var(--fire);  border-color: rgba(255,106,61,.5);  background: rgba(255,106,61,.1); }
+.chip.water { color: var(--water); border-color: rgba(63,208,232,.5); background: rgba(63,208,232,.1); }
+
+.level-grid {
+  display: grid; gap: 12px; margin-top: 22px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.level-card {
+  display: grid; gap: 4px; text-align: left; cursor: pointer;
+  background: #0e1220; border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px; color: var(--ink); font: inherit;
+  transition: border-color .15s ease, transform .15s ease;
+}
+.level-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.level-card .num { color: var(--muted); font-size: 12px; letter-spacing: .1em; }
+.level-card .name { font-weight: 600; }
+.level-grid.locked .level-card { cursor: not-allowed; opacity: .55; }
+.level-grid.locked .level-card:hover { border-color: var(--line); transform: none; }
+
+/* ---------------------------------------------------------------- гра */
+#game-wrap { width: min(860px, 100%); }
+.hud { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+#hud-level { font-weight: 600; }
+
+.stage { position: relative; }
+canvas {
+  width: 100%; height: auto; display: block;
+  border: 1px solid var(--line); border-radius: 14px; background: #10131c;
+}
+
+.modal {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(8,10,17,.72); border-radius: 14px;
+}
+.modal-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+  padding: 24px 30px; text-align: center; min-width: 300px;
+}
+.modal-actions { display: flex; gap: 10px; justify-content: center; }
+
+.keys { margin-top: 12px; text-align: center; font-size: 13px; }
+kbd {
+  background: #0e1220; border: 1px solid var(--line); border-bottom-width: 2px;
+  border-radius: 5px; padding: 1px 6px; font-size: 12px;
+}
+
+.toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+  padding: 9px 18px; font-size: 14px;
+}
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
